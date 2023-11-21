@@ -1,11 +1,14 @@
-; assembler function
 
 global EncryptVigenere
 
 EncryptVigenere:
-        mov eax, 98
-        mov ebx, edi; first param
-        mov ecx, esi; second param
-        mov eax, ebx
-        ret 
+    ; Parameters:
+    ; rdi = plaintext pointer
+    ; rsi = key pointer
+    ; rdx = plaintext length
 
+    xor rcx, rcx     ; plaintext index
+    xor rbx, rbx     ; key index
+
+    mov rax, 98
+    ret

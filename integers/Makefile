@@ -8,7 +8,7 @@ CFLAGS = -g -Wall -pedantic -O2 -std=c99
 AFLAGS = -g -f elf64
 
 PROG = testexe
-OBJECTS = callerfunc.o asmfunc.o
+OBJECTS = callfunc.o asmfunc.o
 
 # Default target - what gets built if you just run "make"
 all: $(PROG)
