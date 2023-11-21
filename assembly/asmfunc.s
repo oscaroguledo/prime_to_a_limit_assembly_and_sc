@@ -10,5 +10,5 @@ EncryptVigenere:
     xor rcx, rcx     ; plaintext index
     xor rbx, rbx     ; key index
 
-    mov rax, 98
+    mov rax, rdx
     ret

@@ -1,37 +1,42 @@
-section .data
-    primes: times 10 db 0   ; Array to store prime factors (assuming a maximum of 10 factors)
+global getarray
 
-global get_array
+getarray:
+    xor rdx, rdx  ; Clear RDX (set it to zero) before performing division
+    mov rcx, rsi
+    mov r8,2
+getarray_loop:
+    cmp rcx, rdi
+    jle continue_get_array_loop; if the counter reaches the number end the function
 
-get_array:
-    mov rdi, 10        ; Number for which prime factors are to be found
-    mov rbx, 2         ; Start checking factors from 2
+    inc rcx
+    jmp getarray_loop
 
-    xor rcx, rcx       ; Counter for the prime factors array
-    mov rsi, primes    ; Address of the primes array
+continue_get_array_loop:
+    mov rax, rcx ; let rax = rcx
 
-find_factors:
-    cmp rdi, 1         ; Check if number becomes 1 (no more factors)
-    je end_loop
+    cmp rax, rdi ; if the counter in rcx stored in rax <= the number--->> continue
+    jle continue
 
-    mov rax, rdi       ; Copy the number to rax
-    xor rdx, rdx       ; Clear rdx
-    div rbx            ; Divide rax by rbx
+    mov rax, 0  ;else let rax be 0 then return rax
+    ret
 
-    cmp rdx, 0         ; Check if remainder is 0
-    jne not_factor
+continue:
+    cmp rax, 3          ; Compare the value in RAX with 3
+    jle less_than_3     ; Jump to less_than_3 if RAX is less than or equal to 3
 
-    ; Found a prime factor, store it in the array
-    mov [rsi + rcx], bl  ; Store the factor in the array
-    inc rcx             ; Increment the array index
+    
+    idiv 2    ; Divide the content of RAX by 2
+    cmp rdx, 0          ; Compare the remainder (in RDX) after division by 2 with 0
+    jne not_mul_of_two  ; Jump to not_mul_of_two if the remainder is not equal to 0
 
-    mov rdi, rax        ; Update the number with the quotient
-    jmp find_factors    ; Continue finding factors
 
-not_factor:
-    inc rbx             ; Check the next number as a factor
-    jmp find_factors    ; Continue the loop
+less_than_3:
+    ret
 
-end_loop:
-    ; Code to do something with the prime factors array
-    ; At this point, the prime factors of 10 are stored in the 'primes' array
+not_mul_of_two:
+    mov rax, rcx
+    ret
+
+
+
+

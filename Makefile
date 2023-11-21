@@ -2,7 +2,7 @@
 CFLAGS = -std=c99 -O2 -Wall -pedantic -g
 
 # List of programs to build
-TARGETS = vigenere
+TARGETS = sievealgo
 
 # Default rule, built if you just say "make"
 all: $(TARGETS)

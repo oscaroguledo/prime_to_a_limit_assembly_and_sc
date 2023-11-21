@@ -4,7 +4,7 @@
 #include <string.h>
 
 #define MAX_LENGTH 100
-extern char* EncryptVigenere(const char *plaintext, const char *key);
+extern char* EncryptVigenere(const char *plaintext, const char *key, int64_t length);
 
 
 int main() {
@@ -15,7 +15,7 @@ int main() {
     if (fgets(plaintext, sizeof(plaintext), stdin) != NULL) {
         printf("Enter a key: ");
         if (fgets(key, sizeof(key), stdin) != NULL) {
-            char *enc = EncryptVigenere(plaintext, key);
+            char *enc = EncryptVigenere(plaintext, key,strlen(plaintext)-1);
             if (enc != NULL) {
                 printf("CIPHERTEXT: %s\n", enc);
                 free(enc);
