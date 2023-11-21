@@ -24,8 +24,8 @@ continue:
     cmp rax, 3          ; Compare the value in RAX with 3
     jle less_than_3     ; Jump to less_than_3 if RAX is less than or equal to 3
 
-    
-    idiv 2    ; Divide the content of RAX by 2
+
+    idiv rax, 2   ; Divide the content of RAX by 2
     cmp rdx, 0          ; Compare the remainder (in RDX) after division by 2 with 0
     jne not_mul_of_two  ; Jump to not_mul_of_two if the remainder is not equal to 0
 
