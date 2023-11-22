@@ -7,7 +7,7 @@ CFLAGS = -g -Wall -pedantic -O2 -std=c99
 # Flags to pass to nasm
 AFLAGS = -g -f elf64
 
-PROG = testexe
+PROG = mainexe
 OBJECTS = callfunc.o asmfunc.o
 
 # Default target - what gets built if you just run "make"

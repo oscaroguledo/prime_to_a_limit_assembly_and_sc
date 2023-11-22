@@ -4,17 +4,17 @@
 #include <stdint.h>
 
 
-extern int64_t getarray(const int64_t number,const int64_t index);
+extern int64_t getarray(const int64_t limit,const int64_t index);
 
 int main()
 {
-    int64_t number,i;
-    printf("Enter the number\n");
-    if (scanf("%ld", &number) == 1) {
+    int64_t limit,i;
+    printf("Set the limit\n");
+    if (scanf("%ld", &limit) == 1) {
         printf("[");
         i=2;
-        while (i <= number ){
-            int64_t ga = getarray(number,i);
+        while (i <= limit ){
+            int64_t ga = getarray(limit,i);
             if (ga >= 2) {
                 printf("%ld,",ga);
             }
