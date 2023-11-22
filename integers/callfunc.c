@@ -6,7 +6,6 @@
 
 extern int64_t getarray(const int64_t number,const int64_t index);
 
-
 int main()
 {
     int64_t number,i;
