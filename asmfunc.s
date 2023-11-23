@@ -1,10 +1,10 @@
+
 global getarray
 
 getarray:
     xor rdx, rdx        ; Clear RDX (set it to zero) before performing division
     mov rcx, rsi        ; Move starting range value to RCX
 
-getarray_loop:
     cmp rcx, rdi        ; Compare current value in RCX with the ending range
     jg is_invalid       ; If current value > ending range, return 0
     
