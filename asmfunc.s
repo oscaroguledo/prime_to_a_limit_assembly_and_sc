@@ -10,9 +10,13 @@ getarray:
     
     mov rax, rcx        ; Copy current value in RCX to RAX for manipulation
     cmp rax, rdi        ; Check if the counter in RCX stored in RAX <= the ending range
-    jle is_prime        ; Continue if the current value is within the range
+    jle is_less_than_two        ; Continue if the current value is within the range
     call is_invalid     ; Return 0 if the current value > ending range
 
+is_less_than_two:       ; ensuring the current value is above 2
+    cmp rax, 2
+    jl is_invalid
+    
 is_prime:
     cmp rax, 3           ; Compare the value in RAX with 3
     jle is_valid       ; If RAX <= 3, it's a valid number
@@ -36,6 +40,7 @@ is_prime:
     xor rdx, rdx        ; Clear RDX before division
     mov r9, 5           ; Set R9 as prime_loop counter
     call prime_loop
+    
 
 prime_loop:
     mov rax, r9
@@ -55,8 +60,7 @@ prime_loop:
     cmp rdx, 0
     je is_invalid       ; Return 0 if it's a multiple of R9
 
-    sub r9, 2
-    add r9, 6
+    add r9, 4
     jmp prime_loop
 
 is_invalid:
